@@ -1,16 +1,11 @@
 from django.db import models
-from apps.commons.models import NameDescModel
-from .constants import JOB_TYPE_Choices, WORK_TYPE_Choices
-
-# # Create your models here.
-# class DemoModel(models.Model):
-#     name = models.CharField(max_length=255)
-#     age = models.PositiveIntegerField()
+from apps.commons.models import NameDescModel, BaseUUIDModel
+from .constants import JOB_TYPE_CHOICES, WORK_TYPE_CHOICES, GENDER_CHOICES
 
 
 # Create your models here.
 # Job or Career Model
-class CareerInfoModel(models.Model):
+class Career(BaseUUIDModel):
     job_title = models.CharField(max_length=150)
     job_req = models.TextField(help_text="Job Requirements", blank=True)
     quantity = models.CharField(max_length=20, blank=True,
@@ -21,22 +16,24 @@ class CareerInfoModel(models.Model):
     experience = models.CharField(max_length=50, blank=True)
     job_location = models.CharField(max_length=50, blank=True)
     salary = models.CharField(max_length=25, blank=True)
-    work_type = models.CharField(max_length=20, blank=True, choices = WORK_TYPE_Choices) #help_text="signifies if the job is remote or office"
+    work_type = models.CharField(max_length=20, blank=True, choices=WORK_TYPE_CHOICES) #help_text="signifies if the job is remote or office"
     submission_deadline = models.DateField()
 
     def __str__(self):
-        return f"{self.job_title} ---->> {self.submission_deadline}"
+        return f"{self.job_title}"
 
     class Meta:
-        verbose_name = 'Career Information Model'
-        verbose_name_plural = 'Career Information Models'
+        verbose_name = 'Career'
+        verbose_name_plural = 'CareerS'
 
 
 # Apply Career Common Model for both published jobs and unpublished jobs (drop your cv part)
-class ApplyCareerCommonModel(models.Model):
+class ApplicantDataAbstractModel(BaseUUIDModel):
     full_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone = models.CharField(max_length=15)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
+    email = models.EmailField(max_length=30)
+    phone_number = models.CharField(max_length=15)
+    location = models.CharField(max_length=100, null=True, blank=True)
     cover_letter = models.TextField(blank=True)
     cv = models.FileField(upload_to='cv/')
     yrs_of_experience = models.CharField(max_length=50)
@@ -46,27 +43,31 @@ class ApplyCareerCommonModel(models.Model):
 
 
 # Career Apply Model Form
-class CareerApplyModel(ApplyCareerCommonModel):
-    career = models.ForeignKey(CareerInfoModel, on_delete=models.SET_NULL, blank=True, null=True)
+class Applicant(ApplicantDataAbstractModel):
+    career = models.ForeignKey(Career, on_delete=models.CASCADE, related_name='job_listed')
     current_salary = models.CharField(max_length=10)
     expected_salary = models.CharField(max_length=10)
 
+    @property
+    def display_name(self):
+        return f"{self.full_name}"
+
     def __str__(self):
-        return f"{self.full_name} applies for  {self.career.job_title}"
+        return self.email
 
     class Meta:
-        verbose_name = 'Career Apply Model'
-        verbose_name_plural = 'Career Apply Models'
+        verbose_name = 'Applicant'
+        verbose_name_plural = 'Applicants'
 
 
 # Drop your CV Model
-class CVCareerModel(ApplyCareerCommonModel):
+class DropCVModel(ApplicantDataAbstractModel):
     area_of_expertise = models.CharField(max_length=50)
-    job_type = models.CharField(max_length=50, choices=JOB_TYPE_Choices) # signifies if he/she applies for internship or work or Freelancing
+    job_type = models.CharField(max_length=50, choices=JOB_TYPE_CHOICES) # signifies if he/she applies for internship or work or Freelancing
 
     def __str__(self):
         return f"{self.full_name} is searching for {self.area_of_expertise} as {self.job_type}"
 
     class Meta:
-        verbose_name = 'CV Career Apply Model'
-        verbose_name_plural = 'CV Career Apply Models'
+        verbose_name = 'Drop Your CV Model'
+        verbose_name_plural = 'Drop Your CV Models'

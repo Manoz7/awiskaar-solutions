@@ -2,7 +2,7 @@ from apps.commons.serializers import DynamicFieldsModelSerializer
 
 from rest_framework import serializers
 
-from ....models import Contact, Service, Partner, Client
+from ....models import Contact, Service, Client
 
 
 class ContactSerializer(DynamicFieldsModelSerializer):
@@ -12,8 +12,16 @@ class ContactSerializer(DynamicFieldsModelSerializer):
 
 
 class ServiceSerializer(DynamicFieldsModelSerializer):
-    ser_image = serializers.ImageField(use_url=True)
+    image = serializers.ImageField(use_url=True)
 
     class Meta:
         model = Service
-        fields = ['id', 'name', 'desc', 'ser_image']
+        fields = ['uuid', 'name', 'desc', 'image']
+
+
+class ClientSerializer(DynamicFieldsModelSerializer):
+    image = serializers.ImageField(use_url=True)
+
+    class Meta:
+        model = Client
+        fields = ['uuid', 'name', 'desc', 'web_url', 'client_type', 'image']

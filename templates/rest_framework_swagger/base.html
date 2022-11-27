@@ -1,4 +1,4 @@
-{##}
+<!-- {##}
 {# █████╗ ██╗     ███████╗██████╗ ████████╗#}
 {#██╔══██╗██║     ██╔════╝██╔══██╗╚══██╔══╝#}
 {#███████║██║     █████╗  ██████╔╝   ██║   #}
@@ -8,9 +8,9 @@
 {#                                         #}
 {##}
 {#This file has to be overridden because staticfiles has been deprecated#}
-
-{% load static %}
+-->
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta charset="UTF-8">
@@ -75,7 +75,7 @@
                         </div>
                     {% endif %}
                     {% block extra_nav %}
-                        {# Override this block to add more buttons, contnt to nav bar. #}
+                        {# Override this block to add more buttons, content to nav bar. #}
                     {% endblock %}
                 {% endif %}
 

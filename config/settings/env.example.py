@@ -25,3 +25,14 @@ DATABASES = {
         'NAME': os.path.join(ASSETS_MEDIA_DIR, 'db.sqlite3'),
     }
 }
+
+
+FRONTEND_URL = 'http://localhost:8000/'
+DEFAULT_FROM_EMAIL = ''
+USE_TEST_PASSWORD = True
+TEST_PASSWORD = 'Asd123!@#'
+
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = ''

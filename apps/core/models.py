@@ -1,16 +1,19 @@
 from django.db import models
-from apps.commons.models import NameDescModel
-
-
-# Create your models here.
-class DemoModel(models.Model):
-    name = models.CharField(max_length=255)
-    age = models.PositiveIntegerField()
+from apps.commons.models import NameDescModel, BaseUUIDModel
+import uuid
 
 
 # Services Model
 class Service(NameDescModel):
-    ser_image = models.ImageField(upload_to='services/', null=True, blank=True)
+    uuid = models.UUIDField(
+        max_length=150,
+        unique=True,
+        error_messages={
+            'unique': "service with that uuid already exists.",
+        },
+        default=uuid.uuid4
+    )
+    image = models.ImageField(upload_to='services/', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -20,22 +23,18 @@ class Service(NameDescModel):
         verbose_name_plural = 'Services'
 
 
-# Partners Model
-class Partner(NameDescModel):
-    part_image = models.ImageField(upload_to='partners/', null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Partner'
-        verbose_name_plural = 'Partners'
-
-
 # Clients Model
 class Client(NameDescModel):
+    uuid = models.UUIDField(
+        max_length=150,
+        unique=True,
+        error_messages={
+            'unique': "client with that uuid already exists.",
+        },
+        default=uuid.uuid4
+    )
     web_url = models.URLField(max_length=50)
-    client_image = models.ImageField(upload_to='clients/', null=True, blank=True)
+    image = models.ImageField(upload_to='clients/', null=True, blank=True)
     client_type = models.CharField(max_length=50, blank=True,
                                    help_text="signifies if the client type is personal, college, business, school.....")
 
