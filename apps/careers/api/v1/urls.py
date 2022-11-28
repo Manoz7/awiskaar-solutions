@@ -6,6 +6,6 @@ ROUTER = routers.DefaultRouter()
 
 ROUTER.register('', CareerViewSet, basename='career-viewset')
 # ROUTER.register('apply', ApplicantViewSet, basename='applicant-viewset')
-ROUTER.register('drop-your-cv', DropCVViewSet, basename='cv-viewset')
+ROUTER.register('cv', DropCVViewSet, basename='cv-viewset')
 
 urlpatterns = ROUTER.urls

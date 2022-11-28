@@ -34,3 +34,20 @@ class DestroyViewSetMixin(
     mixins.DestroyModelMixin
 ):
     pass
+
+
+class ListUpdateRetrieveViewSetMixin(
+    mixins.ListModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.RetrieveModelMixin,
+    GenericViewSet
+):
+    pass
+
+
+class RetrieveDestroyViewSetMixin(
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    pass

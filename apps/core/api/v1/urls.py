@@ -5,9 +5,9 @@ from .views.core import ContactViewSet, ServiceViewSet,ClientViewSet
 
 ROUTER = routers.DefaultRouter()
 
-ROUTER.register('contact', ContactViewSet, basename='contact-viewset')
-ROUTER.register('service', ServiceViewSet, basename='service-viewset')
-ROUTER.register('client', ClientViewSet, basename='client-viewset')
+ROUTER.register('contact_request', ContactViewSet, basename='contact-viewset')
+ROUTER.register('services', ServiceViewSet, basename='service-viewset')
+ROUTER.register('clients', ClientViewSet, basename='client-viewset')
 
 urlpatterns = ROUTER.urls
 
