@@ -49,8 +49,7 @@ class Client(NameDescModel):
 # Contact Model
 class Contact(models.Model):
     name = models.CharField(max_length=50)
-    email = models.EmailField()
-    address = models.CharField(max_length=100)
+    email = models.EmailField(max_length=20)
     subject = models.CharField(max_length=100)
     message = models.TextField(blank=True)
 

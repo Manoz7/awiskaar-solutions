@@ -7,8 +7,8 @@ from ....models import Contact, Service, Client
 
 class ContactSerializer(DynamicFieldsModelSerializer):
     class Meta:
-        model= Contact
-        fields = ['id', 'name', 'email', 'address', 'subject', 'message']
+        model = Contact
+        fields = ['id', 'name', 'email', 'subject', 'message']
 
 
 class ServiceSerializer(DynamicFieldsModelSerializer):

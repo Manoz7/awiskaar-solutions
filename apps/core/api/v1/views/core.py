@@ -50,4 +50,3 @@ class ClientViewSet(ListCreateUpdateRetrieveViewSetMixin, DestroyViewSetMixin):
     queryset = Client.objects.all()
     lookup_field = 'uuid'
     lookup_kwarg = 'uuid'
-

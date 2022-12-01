@@ -62,7 +62,7 @@ class Applicant(ApplicantDataAbstractModel):
 
 # Drop your CV Model
 class DropCVModel(ApplicantDataAbstractModel):
-    area_of_expertise = models.CharField(max_length=50)
+    area_of_expertise = models.CharField(max_length=100)
     job_type = models.CharField(max_length=50, choices=JOB_TYPE_CHOICES) # signifies if he/she applies for internship or work or Freelancing
 
     def __str__(self):
