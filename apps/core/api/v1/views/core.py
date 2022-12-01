@@ -20,7 +20,7 @@ class ContactViewSet(ListCreateRetrieveDestroyViewSetMixin):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
 
-    # Connect form to gmail
+    # Connect form to mail
     # @action(methods=['post'], url_path='add', url_name='add', detail=False)
     # def contact_request(self, request, *args, **kwargs):
     #     ser = self.get_serializer(data=request.data)

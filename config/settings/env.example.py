@@ -19,21 +19,21 @@ else:
 SECRET_KEY = '_sb7l*jg2bhk=bp1hfas2q45#iv6ph_u^@dc%*jz&89(q%*!6(fzn'
 
 # Database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(ASSETS_MEDIA_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'awiskaar',
-        'USER': 'awiskaar',
-        'PASSWORD': 'Awiskaar@123$$',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(ASSETS_MEDIA_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'awiskaar',
+#         'USER': 'awiskaar',
+#         'PASSWORD': 'Awiskaar@123$$',
+#     }
+# }
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sheamuskhan48@gmail.com'
