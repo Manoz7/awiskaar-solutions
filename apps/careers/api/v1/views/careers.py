@@ -31,7 +31,7 @@ class CareerViewSet(ListUpdateRetrieveViewSetMixin, DestroyViewSetMixin):
         return CareerSerializer
 
     @action(methods=['post'], url_path='add_job', url_name='add-job', detail=False)
-    def add_job(self,request,*args, **kwargs):
+    def add_job(self, request, *args, **kwargs):
         self.parser_classes = [FileUploadParser]
         ser = self.get_serializer(data=request.data)
         ser.is_valid(raise_exception=True)
@@ -81,7 +81,8 @@ class CareerViewSet(ListUpdateRetrieveViewSetMixin, DestroyViewSetMixin):
 
     @action(methods=['get'], detail=False, url_path='cv_lists', url_name='cv-lists')
     def cv_lists(self, request, *args, **kwargs):
-        ser = DropCVSerializer(DropCVModel.objects.all(), many=True)
+        obj=DropCVModel.objects.all()
+        ser = DropCVSerializer(obj, many=True)
         return Response(ser.data)
 
     # @action(methods=['get'], detail=False, url_path='cv/(?P<cv_uuid>[^/.]+)', url_name='cv-detail')

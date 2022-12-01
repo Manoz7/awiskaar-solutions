@@ -19,20 +19,25 @@ else:
 SECRET_KEY = '_sb7l*jg2bhk=bp1hfas2q45#iv6ph_u^@dc%*jz&89(q%*!6(fzn'
 
 # Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(ASSETS_MEDIA_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(ASSETS_MEDIA_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'awiskaar',
+        'USER': 'awiskaar',
+        'PASSWORD': 'Awiskaar@123$$',
     }
 }
 
-
-FRONTEND_URL = 'http://localhost:8000/'
-DEFAULT_FROM_EMAIL = ''
-USE_TEST_PASSWORD = True
-TEST_PASSWORD = 'Asd123!@#'
-
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = ''
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sheamuskhan48@gmail.com'
+EMAIL_HOST_PASSWORD = 'Sheamus@123'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,4 +1,6 @@
 import os
+import sys
+import django
 
 # CONFIG_DIR points to config package (project/src/apps/config)
 CONFIG_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

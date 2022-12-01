@@ -6,7 +6,7 @@ import uuid
 # Services Model
 class Service(NameDescModel):
     uuid = models.UUIDField(
-        max_length=150,
+        max_length=20,
         unique=True,
         error_messages={
             'unique': "service with that uuid already exists.",
@@ -26,7 +26,7 @@ class Service(NameDescModel):
 # Clients Model
 class Client(NameDescModel):
     uuid = models.UUIDField(
-        max_length=150,
+        max_length=20,
         unique=True,
         error_messages={
             'unique': "client with that uuid already exists.",

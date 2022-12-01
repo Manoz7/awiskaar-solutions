@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block email_body %}
+<p>
+ This is the message and subject from the Awiskaar Solutions contact form.
+    <span>{{ contact.name }}</span>
+    <span>{{ contact.email }}</span>
+    <span>{{ contact.address }}</span>
+    <span>{{ contact.subject }}</span>
+    <span>{{ contact.message }}</span>
+</p>
+{% endblock email_body %}

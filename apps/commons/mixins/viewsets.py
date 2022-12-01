@@ -51,3 +51,22 @@ class RetrieveDestroyViewSetMixin(
     GenericViewSet
 ):
     pass
+
+
+class ListRetrieveDestroyViewSetMixin(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    pass
+
+
+class ListCreateRetrieveDestroyViewSetMixin(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    pass

@@ -6,7 +6,7 @@ from .constants import JOB_TYPE_CHOICES, WORK_TYPE_CHOICES, GENDER_CHOICES
 # Create your models here.
 # Job or Career Model
 class Career(BaseUUIDModel):
-    job_title = models.CharField(max_length=150)
+    job_title = models.CharField(max_length=50)
     job_req = models.TextField(help_text="Job Requirements", blank=True)
     quantity = models.CharField(max_length=20, blank=True,
                                 help_text="Number of employees required")
@@ -24,7 +24,7 @@ class Career(BaseUUIDModel):
 
     class Meta:
         verbose_name = 'Career'
-        verbose_name_plural = 'CareerS'
+        verbose_name_plural = 'Careers'
 
 
 # Apply Career Common Model for both published jobs and unpublished jobs (drop your cv part)
