@@ -30,6 +30,9 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'django_filters',
     'drf_yasg',
+    'corsheaders',
+    'django_q',
+
 ]
 USER_DEFINED_APPS = [
     'apps.core',
@@ -40,6 +43,7 @@ INSTALLED_APPS = BUILT_IN_APPS + THIRD_PARTY_APPS + USER_DEFINED_APPS
 BUILT_IN_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -146,5 +150,18 @@ SWAGGER_SETTINGS = {
         }
     },
 }
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
+LOGIN_REDIRECT_URL = '/api/root/'
 
 SITE_ID = 1
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+#############################################################
+# cors base settings
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False
